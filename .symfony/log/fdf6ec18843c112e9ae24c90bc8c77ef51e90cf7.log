@@ -1,0 +1,3 @@
+{"level":"debug","source":"server","source":"PHP","time":"2021-09-20T09:10:47-04:00","message":"Reloading PHP versions"}
+{"level":"debug","source":"server","source":"PHP","time":"2021-09-20T09:10:47-04:00","message":"Using PHP version 7.4.16 (from most recent PHP version)"}
+{"level":"info","source":"server","source":"PHP","php":"7.4.16","path":"/usr/bin/php7.4","port":33153,"time":"2021-09-20T09:10:47-04:00","message":"listening"}

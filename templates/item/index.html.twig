@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Voir tous les articles'%}
+
+{% block body %}
+
+    <div class="container mt-4">
+          <h1> Voir tous les articles </h1>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lorem mi, accumsan eu quam eu, imperdiet laoreet nibh. Ut in massa congue, convallis massa ut, suscipit massa. Integer tempor fringilla venenatis. In vestibulum lacus id venenatis iaculis. Praesent turpis nisi, imperdiet id fermentum non, mattis vel sem. Vestibulum sapien ligula, pellentesque eu molestie ac, congue non mi. Sed varius risus vulputate faucibus dapibus. In eu mattis justo, id ornare nibh. Donec id tempus libero. Aenean sit amet tortor vitae dui mattis porttitor. Pellentesque augue nulla, sagittis vitae orci non, viverra dictum eros. Nam et sem purus.
+
+Sed at massa est. Aenean maximus lorem felis. Integer ac mauris a metus mattis condimentum. Proin volutpat non tortor eleifend vehicula. Cras at mattis est. Curabitur accumsan non turpis non rhoncus. Maecenas dictum laoreet tortor, non euismod turpis mollis ac. Curabitur leo odio, mattis eu lacinia vel, euismod quis dolor. Donec mauris magna, molestie et mi eget, semper faucibus leo. Curabitur ac lorem cursus, tincidunt odio nec, porta nibh. Cras iaculis eros at lacus ultricies venenatis. Nunc vitae tempus arcu, non maximus velit. </p>
+ 
+    
+        <div class="row flex">
+            {% for item in items %}
+                 <div class="col-md-12">
+              {% include 'item/_item.html.twig' %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
+
+{% endblock %}

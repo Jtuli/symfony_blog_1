@@ -1,0 +1,16 @@
+{
+    "dir": "/home/ubuntu/Bureau/BlogSymfony",
+    "watch": null,
+    "pid": 7974,
+    "port": 0,
+    "scheme": "",
+    "args": [
+        "/usr/bin/php7.4",
+        "-S",
+        "127.0.0.1:33153",
+        "-d",
+        "variables_order=EGPCS",
+        ".symfony/php/fdf6ec18843c112e9ae24c90bc8c77ef51e90cf7-router.php"
+    ],
+    "name": "PHP"
+}
