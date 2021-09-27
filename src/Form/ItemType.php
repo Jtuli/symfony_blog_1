@@ -6,6 +6,7 @@ use App\Entity\Item;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class ItemType extends AbstractType
 {
@@ -13,7 +14,7 @@ class ItemType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
+            ->add('content', CKEditorType::class)
             ->add('filename')
             ->add('visible')
         ;
