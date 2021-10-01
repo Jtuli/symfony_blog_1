@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs mt-4">
+    <li class="nav-item">
+        <a class="nav-link {% if current_menu is defined and current_menu == 'admin.items' %} active {% endif %}" aria-current="page" href="{{ path("admin.item.index") }}">Articles</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if current_menu is defined and current_menu == 'admin.items' %} active {% endif %}" aria-current="page" href="{{ path("admin.category.index") }}">Catégories</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if current_menu is defined and current_menu == 'admin.items' %} active {% endif %}" aria-current="page" href="{{ path("admin.tag.index") }}">Tags</a>
+    </li>
+</ul>

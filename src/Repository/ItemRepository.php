@@ -3,7 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Item;
+use App\Entity\ItemSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query as ORMQuery;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,14 +22,58 @@ class ItemRepository extends ServiceEntityRepository
         parent::__construct($registry, Item::class);
     }
 
-    public function findAllVisible(): array
+    /**
+     * Undocumented function
+     *
+     * @return ORMQuery
+     */
+    public function findAllVisibleQuery(ItemSearch $search): ORMQuery
+    {
+        $query = $this->findVisibleQuery();
+
+        /*if ($search->getTag()){
+            $query = $query
+                ->andWhere(':tag MEMBER OF i.tags')
+                ->setParameter('tag', $search->getTag());
+        dump($search->getTag());        
+        }*/
+
+        if($search->getTag()->count()> 0) {
+            $k = 0;
+            foreach($search->getTag() as $tag) {
+                $k++;
+                $query = $query
+                        ->andWhere(":tag$k MEMBER OF i.tags")
+                        ->setParameter("tag$k", $tag);
+            }
+        }
+        return $query->getQuery();
+    }
+
+
+    /**
+     * Undocumented function
+     *
+     * @return Item[]
+     */
+    public function findLimitedQuery() {
+  
+        return $this->findVisibleQuery()
+                    ->setMaxResults(8)
+                    ->getQuery()
+                    ->getResult();
+
+
+    }
+
+
+    private function findVisibleQuery(): QueryBuilder
     {
         return $this->createQueryBuilder('i')
-            ->andWhere('i.visible = 1')
-            ->getQuery()
-            ->getResult()
-        ;
+            ->where('i.visible=1');
     }
+
+
 
     // /**
     //  * @return Item[] Returns an array of Item objects

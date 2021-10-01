@@ -3,6 +3,7 @@
 {% block title 'Gérer les articles'%}
 
 
+
 {% block body %}
 
 {% include 'admin/admin_panel.html.twig' %}
@@ -14,29 +15,28 @@
                 <div class="alert alert-success"> {{ message }}</div>
 
           {% endfor %}
-
        
         <table class="table table-stripped">
             <thead>
             <tr>
-                <th>Nom de l'article</th>
+                <th>Nom du tag</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-              {% for item in items %}
+              {% for tag in tags %}
               
              
                 <tr>
             
                 </div>
             
-                    <td>{{ item.title }}</td>
+                    <td>{{ tag.name }}</td>
                     <td>
-                        <a href=" {{ path('admin.item.edit', {id: item.id }) }}" class="btn btn-secondary">Editer</a>
+                        <a href=" {{ path('admin.tag.edit', {id: tag.id }) }}" class="btn btn-secondary">Editer</a>
 
-                        <form method="post" action="{{ path('admin.item.delete', {id: item.id }) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous vraiment sûr ?')">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.id) }}">
+                        <form method="post" action="{{ path('admin.tag.delete', {id: tag.id }) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous vraiment sûr ?')">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tag.id) }}">
                         <button class="btn btn-danger">Supprimer</button></form>
                         
                     </td>
@@ -47,7 +47,7 @@
         </table>
 
         <div class="text-right">
-            <a href=" {{ path('admin.item.new') }}" class="btn btn-primary">Créer un article</a>
+            <a href=" {{ path('admin.tag.new') }}" class="btn btn-primary">Créer un tag</a>
         </div>
 
     </div>

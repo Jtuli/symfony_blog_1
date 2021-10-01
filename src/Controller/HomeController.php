@@ -2,30 +2,36 @@
 
 namespace App\Controller;
 
+use App\Repository\ItemRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
 
 class HomeController extends AbstractController
 {
 
-/**
- * @var Environment
-  */
-private $twig;
+    /**
+     * @var ItemRepository
+     */
+    private $repository;
 
-    public function __construct(Environment $twig)
+    public function __construct(ItemRepository $repository, EntityManagerInterface $em)
     {
-        $this->twig = $twig;
-
+        $this->repository = $repository;
+        $this->em = $em;
     }
     /**
      * @Route("/", name="home")
      * @return Response
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        return new Response($this->twig->render('pages/home.html.twig'));
+        $items= $this->repository->findLimitedQuery();
+        return $this->render('pages/home.html.twig', [
+            'current_menu' => 'home',
+            'items' => $items
+        ]);
     }
 }
