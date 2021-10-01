@@ -14,20 +14,22 @@
 
                 
                 <div class="row">
-                    <div class="col-md-8">
-                    {#
-                    {% if property.filename %}
+                    <div class="col">
 
-                        <img src="{{ vich_uploader_asset(property, 'imageFile' ) | imagine_filter('medium') }}" alt="card-img-top" style="width:100%; height: auto;">
-                        {% else %}
-                        <img src="{{ 'images/properties/empty.png' | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
+                    <h1>{{ item.title}}</h1>
 
-                    {% endif %} #}
-                    </div>
-                    <div class="col-md-4">
-                            <h1>{{ item.title}}</h1>
+                    <p>{% for categoryname in item.category %}
+                        {{ categoryname.name }},
+                        
+                    {% endfor %} -  
+                    {% for tag in item.tags %}
+                        <span class="badge bg-light text-dark">{{ tag.name }}</span>
+                        
+                    {% endfor %}
+                    </p>
                            {{item.content}}
                     </div>
+            
              </div>
             </div>
         </div>

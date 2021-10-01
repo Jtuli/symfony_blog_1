@@ -3,9 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Item;
+use App\Entity\ItemSearch;
+use App\Form\ItemSearchType;
 use App\Repository\ItemRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,17 +31,24 @@ class ItemController extends AbstractController
      * @Route("/item", name="item.index")
      * @return Response
      */
-    public function index() : Response
+    public function index(PaginatorInterface $paginatorInterface, Request $request) : Response
     {
-        $item = $this->repository->findAllVisible();
-        dump($item);
+        $search = new ItemSearch;
+        $form = $this->createForm(ItemSearchType::class, $search);
+        $form->handleRequest($request);
+        $items = $paginatorInterface->paginate(
+                    $this->repository->findAllVisibleQuery($search),
+                    $request->query->getInt('page', 1), 12);
         //$this->em->flush();
         return $this->render('item/index.html.twig', [
             'current_menu' => 'items',
-            'items' => $item
+            'items' => $items,
+            'form' => $form->createView()
 
         ]);
     }
+
+    
     /**
      * Undocumented function
      * @Route("/item/{slug}-{id}", name="item.show", requirements={"slug": "[a-z0-9\-]*"})

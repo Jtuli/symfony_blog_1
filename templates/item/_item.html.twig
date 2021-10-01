@@ -1,12 +1,12 @@
 <div class="card mb-4">
 
-   {# {% if property.filename %}
+   {% if item.filename %}
 
-        <img src="{{ vich_uploader_asset(property, 'imageFile' ) | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
+        <img src="{{ vich_uploader_asset(item, 'imageFile' ) | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
         {% else %}
-        <img src="{{ 'images/properties/empty.png' | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
+        <img src="{{ 'images/items/empty.jpg' | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
 
-    {% endif %}#}
+    {% endif %}
     <div class="card-body">
 
         <h5 class="card-title">
