@@ -21,6 +21,7 @@ class AdminTagController extends AbstractController
     public function index(TagRepository $tagRepository): Response
     {
         return $this->render('admin/tag/index.html.twig', [
+            'current_menu' => 'admin.tag.index',
             'tags' => $tagRepository->findAll(),
         ]);
     }

@@ -1,4 +1,16 @@
+a {
+    text-decoration: none !important;
+}
 .category-name {
     padding: 3px;
     border-radius: 5px;
+}
+
+.meta-item-list {
+    font-size: 0.9em;
+}
+
+.meta-item-list a {
+    text-decoration: none;
+    color:#333333;
 }

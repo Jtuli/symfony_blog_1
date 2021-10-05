@@ -30,11 +30,15 @@ class AdminItemController extends AbstractController
      * @Route("/admin", name="admin.item.index")
      * @return Response
      */
-    public function index()
+    public function index(ItemRepository $itemRepository): Response
     {
-        $items = $this->repository->findAll();
-        return $this->render('admin/item/index.html.twig', compact('items'));
+        return $this->render('admin/item/index.html.twig', [
+            'current_menu' => 'admin.index',
+            'items' => $itemRepository->findAll(),
+            
+        ]);
     }
+
 
     /**
      * @Route("/admin/item/create", name="admin.item.new")

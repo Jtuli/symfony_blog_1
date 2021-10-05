@@ -21,7 +21,9 @@ class AdminCategoryController extends AbstractController
     public function index(CategoryRepository $categoryRepository): Response
     {
         return $this->render('admin/category/index.html.twig', [
+            'current_menu' => 'admin.category.index',
             'categories' => $categoryRepository->findAll(),
+            
         ]);
     }
 

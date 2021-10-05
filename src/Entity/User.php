@@ -30,6 +30,16 @@ class User implements UserInterface, Serializable
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $profilpicture;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +131,30 @@ class User implements UserInterface, Serializable
             $this->username,
             $this->password
         ) = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getProfilpicture(): ?string
+    {
+        return $this->profilpicture;
+    }
+
+    public function setProfilpicture(?string $profilpicture): self
+    {
+        $this->profilpicture = $profilpicture;
+
+        return $this;
     }
 
 }

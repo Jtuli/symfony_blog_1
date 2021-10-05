@@ -1,5 +1,5 @@
 
-<div class="card mb-4">
+<div class="card mb-4 border-0">
     
     {% if item.filename %}
 
@@ -15,14 +15,19 @@
     
          <span class="category-name text-white bg-secondary mb-3" style="background-color : {{item.category.color}} !important">{{item.category.name}}</span>
 
-        <h5 class="card-title">
+        <h5 class="card-title mt-2">
            
             {{item.title}} 
             <a href="{{ path('item.show', {id: item.id, slug: item.slug })}}"></a>
         </h5>
-
+        <div class="meta-item-list align-items-center text-left text-muted clearfix">
+        <figure></figure><span>Par <a href="#">Eponine Gravier</a></span><span> - {{item.createdat|date("d M Y")}}</span>
+        </div>
+        
         {#<p class="card-text"> {{ item.description | nl2br }} </p>#}
-        <p class="card-text"> {{ item.content }}</p>
+        <p class="card-text mt-4"> {{ item.content| u.truncate(150, "...",false)}} </p> <a href="{{ path('item.show', {id: item.id, slug: item.slug })}}">Voir plus</a>
+
+
 
 
     </div>
