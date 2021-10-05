@@ -69,7 +69,7 @@ class AdminCategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin.category.index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/category/edit.html.twig', [

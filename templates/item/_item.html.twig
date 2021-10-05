@@ -1,23 +1,27 @@
 <div class="card mb-4">
 
-   {% if item.filename %}
 
-        <img src="{{ vich_uploader_asset(item, 'imageFile' ) | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
-        {% else %}
-        <img src="{{ 'images/items/empty.jpg' | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
 
-    {% endif %}
-    <div class="card-body">
-
-        <h5 class="card-title">
-            <a href="{{ path('item.show', {id: item.id, slug: item.slug })}}">
-            {{item.title}} </a>
-        </h5>
-
-        {#<p class="card-text"> {{ property.description | nl2br }} </p>#}
-        <p class="card-text"> {{ item.content}}</p>
-
+    <div class="card border-0 text-white">
     
+        {% if item.filename %}
+
+            <img src="{{ vich_uploader_asset(item, 'imageFile' ) | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
+            {% else %}
+            <img src="{{ 'images/items/empty.jpg' | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
+
+        {% endif %}
+         
+        <div class="card-img-overlay d-flex align-items-end" style="background-color: #0000003d;">
+            
+            
+            <div>
+                 <span class="category-name text-white bg-secondary " style="background-color : {{item.category.color}} !important">{{item.category.name}}</span>
+                <h5 class="card-title text-white">{{item.title}} </h5>
+                <a href="{{ path('item.show', {id: item.id, slug: item.slug })}}" class="stretched-link"></a>
+                <p class="card-text text-light">{{item.createdat|date("d M Y")}}</p>
+            </div>
+        </div>
     </div>
 
 </div>

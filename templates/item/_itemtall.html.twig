@@ -1,0 +1,30 @@
+
+<div class="card mb-4">
+    
+    {% if item.filename %}
+
+        <img src="{{ vich_uploader_asset(item, 'imageFile' ) | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
+        {% else %}
+        <img src="{{ 'images/items/empty.png' | imagine_filter('thumb') }}" alt="card-img-top" style="width:100%; height: auto;">
+
+    {% endif %}
+
+   
+
+    <div class="card-body">
+    
+         <span class="category-name text-white bg-secondary mb-3" style="background-color : {{item.category.color}} !important">{{item.category.name}}</span>
+
+        <h5 class="card-title">
+           
+            {{item.title}} 
+            <a href="{{ path('item.show', {id: item.id, slug: item.slug })}}"></a>
+        </h5>
+
+        {#<p class="card-text"> {{ item.description | nl2br }} </p>#}
+        <p class="card-text"> {{ item.content }}</p>
+
+
+    </div>
+
+</div>
