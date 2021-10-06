@@ -34,6 +34,11 @@ class Category
      */
     private $color;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $nav_visible;
+
   /*  public function __toString() {
         return $this->name;
     }*/
@@ -98,6 +103,18 @@ class Category
     public function setColor(?string $color): self
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    public function getNavVisible(): ?bool
+    {
+        return $this->nav_visible;
+    }
+
+    public function setNavVisible(bool $nav_visible): self
+    {
+        $this->nav_visible = $nav_visible;
 
         return $this;
     }

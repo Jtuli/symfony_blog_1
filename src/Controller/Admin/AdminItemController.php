@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Item;
 use App\Form\ItemType;
+use App\Repository\CategoryRepository;
 use App\Repository\ItemRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,8 +20,11 @@ class AdminItemController extends AbstractController
      */
     private $repository;
 
+
+
     public function __construct(ItemRepository $repository, EntityManagerInterface $em)
     {
+
         $this->repository = $repository;
         $this->em = $em;
     }
@@ -32,9 +36,10 @@ class AdminItemController extends AbstractController
      */
     public function index(ItemRepository $itemRepository): Response
     {
+
         return $this->render('admin/item/index.html.twig', [
             'current_menu' => 'admin.index',
-            'items' => $itemRepository->findAll(),
+            'items' => $itemRepository->findAll()
             
         ]);
     }

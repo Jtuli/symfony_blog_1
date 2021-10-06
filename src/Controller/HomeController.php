@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\ItemRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,6 +17,8 @@ class HomeController extends AbstractController
      * @var ItemRepository
      */
     private $repository;
+
+
 
     public function __construct(ItemRepository $repository, EntityManagerInterface $em)
     {
@@ -32,6 +35,7 @@ class HomeController extends AbstractController
         return $this->render('pages/home.html.twig', [
             'current_menu' => 'home',
             'items' => $items
+
         ]);
     }
 }
